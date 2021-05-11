@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // Задача :Вывести простые числа используя вложенные числа и метку.Натуральное число , больше 1, если она ни на что не делиться, кроме себя и 1
+    //2, 3, 5, 7, 11, 13
+    // skip:  for( let i = 2;  i <=10; i++){
+    //       for(let j = 2 ; j < i ; j++ ){
+    //           if(i % j === 0) continue skip;
+    //       }
+    //     document.write(`${i} <br>`)
+    //   }
+    const checkAdmin = confirm('Are you admin');
+    let i = 3;
+    if (checkAdmin) {
+        let password = prompt('Enter password')
+        if (password === 'imbatman') {
+            alert('Пароль верен')
+        } else {
+           let j = prompt('Введите пароль снова')
+            while (j !== password) {
+                i--;
+                j = prompt('Введите пароль снова')
+                i--;
+                j = prompt('Введите пароль снова')
+                i--;
+                if (i === 0) {
+                    alert('ваши попытки закончились')
+                    break;
+                }
+            }
+
+        }
+
+    } else {
+        alert('Катись отсюда')
+    }
+
+
+
+</script>
+</body>
+</html>

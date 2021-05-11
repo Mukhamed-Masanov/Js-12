@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--First block создание функции, основные термины -->
+<script>
+  //Function - участок программного кода выполняющий определенную задачу.
+  //для чего они нужны:
+  //1)Повторное использование кода(реиспользование/reuse)
+  //2)Позволяет избежать дублирование кода в проекте.
+  //3)Изменения одного участка функции будет применено для всех использований этой функции.
+
+  //Примечание : функция по правилам должна именоваться как глагол(Пример:checkPassword, validtTerms, equalNumbers)
+
+//параметр message(переменная) будет принимать значения переданные в функцию
+  function alertMessage(message){
+    alert(message);
+  }
+
+  function writeArray(){
+    let ar = [1,2,3,4,5];
+    console.log(ar);
+    alert('Main')
+    alertMessage('Я переданный текст');//передача значения  в функцию
+  }
+
+  writeArray();//вызов функции.Без вызова функции , код внутри выполнен не будет.
+
+</script>
+</body>
+</html>
