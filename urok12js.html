@@ -17,33 +17,58 @@
     //       }
     //     document.write(`${i} <br>`)
     //   }
-    const checkAdmin = confirm('Are you admin');
-    let i = 3;
-    if (checkAdmin) {
-        let password = prompt('Enter password')
-        if (password === 'imbatman') {
-            alert('Пароль верен')
-        } else {
-           let j = prompt('Введите пароль снова')
-            while (j !== password) {
-                i--;
-                j = prompt('Введите пароль снова')
-                i--;
-                j = prompt('Введите пароль снова')
-                i--;
-                if (i === 0) {
-                    alert('ваши попытки закончились')
-                    break;
-                }
-            }
+    // const checkAdmin = confirm('Are you admin');
+    // let i = 3;
+    // if (checkAdmin) {
+    //     let password = prompt('Enter password')
+    //     if (password === 'imbatman') {
+    //         alert('Пароль верен')
+    //     } else {
+    //        let j = prompt('Введите пароль снова')
+    //         while (j !== password) {
+    //             i--;
+    //             j = prompt('Введите пароль снова')
+    //             i--;
+    //             j = prompt('Введите пароль снова')
+    //             i--;
+    //             if (i === 0) {
+    //                 alert('ваши попытки закончились')
+    //                 break;
+    //             }
+    //         }
+    //
+    //     }
+    //
+    // } else {
+    //     alert('Катись отсюда')
+    // }
+</script>
+<script>
 
+    let a = +prompt('введите число') ,   b = +prompt('Введите число') , j =2, i = 2 ;
+    let divA , divB ;
+    while(j <= a && i <=b){
+        divA = a % j;
+        divB = b % i;
+        j++;
+        i++;
+        if(divA !==0){
+            continue;
+        }
+        if(divB !==0){
+            continue;
         }
 
-    } else {
-        alert('Катись отсюда')
+        document.write(`${j} --- ${i}`);
     }
 
-
+    // for(j = 2;  j<=a ; j++){
+    //     div = a % j ;
+    //     if(div !== 0){
+    //         continue;
+    //     }
+    //     document.write(`${j} <br>`);
+    // }
 
 </script>
 </body>
