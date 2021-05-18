@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!--Блок 1 генерация случайных чисел и случайная выборка-->
+<script>
+  //Генерация случайных чисел
+  // let random = Math.random();//генерирует случайное число от 0(включая) до 1(не включая) ;
+  // console.log(random);
+  //Задача 1 . Создать функцию , генерирующую случайное число между двумя веденнымии значениями(оба включительно)
+  function getRandom(min, max){
+    //три строки ниже , если мы хотим получить целое число
+    min = Math.ceil(); //округление до целого
+    max = Math.floor(max); // округление до целого вниз
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  let min = +prompt('Введите мин число')
+  let max = +prompt('Введите макс число')
+  alert(getRandom(min, max))
+</script>
+</body>
+</html>>
