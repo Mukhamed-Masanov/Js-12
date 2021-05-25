@@ -14,16 +14,25 @@
   // let random = Math.random();//генерирует случайное число от 0(включая) до 1(не включая) ;
   // console.log(random);
   //Задача 1 . Создать функцию , генерирующую случайное число между двумя веденнымии значениями(оба включительно)
-  function getRandom(min, max){
-    //три строки ниже , если мы хотим получить целое число
-    min = Math.ceil(); //округление до целого
-    max = Math.floor(max); // округление до целого вниз
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  let min = +prompt('Введите мин число')
-  let max = +prompt('Введите макс число')
-  alert(getRandom(min, max))
+  // function getRandom(min, max){
+  //   //три строки ниже , если мы хотим получить целое число
+  //   min = Math.ceil(); //округление до целого
+  //   max = Math.floor(max); // округление до целого вниз
+  //   // return Math.floor(Math.random() * (max - min + 1)) + min;
+  //   return Math.floor(Math.random() * (max - min + 1)) + min;
+  // }
+  // let min = +prompt('Введите мин число')
+  // let max = +prompt('Введите макс число')
+  // alert(getRandom(min, max))
+
+  //Задача выбрать случайный элемент массива и вернуть случайный элемент
+  // function getRandomElemArray(arr) {
+  //   let randomIn = Math.floor(Math.random() * arr.length);
+  //   return arr[randomIn];
+  // }
+  // const array =['PHP','Java', 'JavaScript' , 'TypeScript' , 'C++' , 'Perl' ]
+  // alert(getRandomElemArray(array));
+
 </script>
 </body>
-</html>>
+</html>

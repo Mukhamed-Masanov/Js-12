@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Блок 1 . CAllback и анонимные функции-->
+<script>
+    //CALLBACK функцичя обратного вызова - функция обратного вызова , которая передается в качестве аргумента другой функции.
+   // function square(num) {
+   //      return num * num;
+   //  }
+
+    // function each(arr, square) {
+    //     let resultArr = [];
+    //     for (let elem of arr) {
+    //         resultArr.push(square(elem))
+    //     }
+    //     return resultArr;
+    // }
+    // alert(each([1, 2, 3, 4, 5], square));
+
+
+    //CALLBACK ФУНКЦИЯ ЧАСТО ЯВЛЯЕТСЯ АНОНИМНОЙ(Т.Е ОБЪЯВЛЯЕТСЯ БЕЗ ИМЕНИ)
+    //т.е в данной записи функция square заменена на анонимную function (num)
+//    const result =  each([ 1 ,2 , 3, 4, 5] , function (num){
+//        return num * num;
+//     });
+// alert(result);
+
+</script>
+
+<!--Блок 2 Стрелочные функции-->
+<script>
+    //Стрелочные функции появились в ES6 и позволяют упростить работу с анонимными функциями.
+    //ДО ES6
+//     let add = function (a , b){
+//         return a +b;
+//     };
+// //    После ES6
+//     let add2 = (a , b) => a+b;
+//     alert(add(5 , 4)); //9
+//     alert(add2(5 , 4 )) //9
+
+    //Если при исп стрелочной функции в ее теле будет исп толко 1 инструкция то она будет воспринята как возращаемое значение return.
+    //ЕСли вам необхлдимо создать анонимно стрелочную функцию с несколькими выражениями , то способ записи след :
+    // let f = (a , b)  => {
+    //     let tmp = a ** b;
+    //     return tmp * b ;
+    // }
+    // alert(f(5 , 4)) //2500
+
+</script>
+
+<!--Блок 3. Оператор... - это и оператор Spread(распространение) или rest(остаток) в зависимости в контексте использвания -->
+<script>
+    //параметр ...nums получит аргументы из точки вызова.Сформировав массив
+    ///n - спец.сим дл переноса на новую строку в алерте
+    // function f( num1 , num2 , ...nums){
+    //     alert(num1 + num2);//6
+    //     //4, 5, 6
+    // }
+    // f(...[1,2,3,4,5,6]);//В данном случае произойдет разбиение массива на элементы. т.е. сработает как оператор spread .Выведется 6
+
+
+    //Задача создать функцию считающюю сумму всех елементов массива кроме первого и возвращающий ее.
+    //
+    // function f(num1, ...nums){
+    //
+    //
+    // }
+    // alert(f(...[10 , 20 , 30 , 40 ]));
+
+    // function f( num1 , ...ar){
+    //     let sum = 0 ;
+    //     for (let elem of ar){
+    //        sum += elem;
+    //     }
+    //     return sum;
+    // }
+    // const array = [ 1 ,2 , 3, 4, 5, 6]
+    // alert(f(...array))
+</script>
+</body>
+</html>

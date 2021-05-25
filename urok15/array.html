@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Базовая работа с массивами-->
+<script>
+
+  //Создание двух массивов
+  // let ar = [];
+  // let ar2 = newArray();//не предпочтителен
+  // let ar3= [2];//создали массив с элементом 2
+  // let ar4  = newArray(2);//создан массив Длиной 2
+  // // alert(ar3[0])//2
+  // // alert(ar4[0])//undefined
+  // let arr5 = [2 ,4 ,5]
+  // let arr6 = newArray(2 , 4, 6)//создан массив 2 4 6
+
+  //Работа с длиной массива
+  // let students = ['Мухамед' , 'Евгений' , "Сабина" , "настя" , "Илья"]
+  // //определить длину массива
+  // console.log(students.length)
+  // //Оставить первые два елемента массива
+  // students.length = 2 ;
+  // console.log(students); //МУхамед , Евгений
+  // //Очистить массив
+  // students.length = 0;
+  // console.log(students)
+  // students.length = 4 ;
+  // console.log(students[3]);//undefined , потому что в 32 строка ме затерли участок памяти выделенной для массива
+
+</script>
+<!--Блок 2. Методы для работы с массивами-->
+<script>
+     let students = ['Мухамед' , 'Евгений' , "Сабина" , "настя" , "Илья"]
+// метод.pop() - удаляет последний массива , и возвращает удаленный элемент , при этом изменяя исходный массив
+     console.log(students.pop());//Алексей
+     console.log(students)//'Мухамед' , 'Евгений' , "Сабина" , "настя"
+     //Добавить в конец массива
+     console.log(students.push('Алексей'))//вернет длину массива 6
+     
+</script>
+</body>
+</html>
