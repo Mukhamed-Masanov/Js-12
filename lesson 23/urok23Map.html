@@ -59,15 +59,20 @@
     }
     console.log(millionPlusCity)
 
-    // декларативный - отвечает на вопрос (как?) . Способ написания программы, который нацелен на выполнение без дополнительного
+    // декларативный - отвечает на вопрос (что?) . Способ написания программы, который нацелен на выполнение без дополнительного
     // описания того , как необходимо решать задачу
     const  millionPlusCity2 = city.filter(x => x.population >= 1000000).map(x => x.name);
     console.log(millionPlusCity2)
 
     //Задача : поиск (чувствительный к регистру)
     //Remember it!!!
-    let search = city.filter(x => x.name.includes('sk') =>)
+    let search = city.filter(x => x.name.includes('sk'))
+    //Object.values формирует массив значений из объектов
+    //map(x =>Object.values(x) // или так
+    //map(x => [x.name , x.population]) //или так
+    //map()
     console.log(search);
+
 </script>
 </body>
 </html>
