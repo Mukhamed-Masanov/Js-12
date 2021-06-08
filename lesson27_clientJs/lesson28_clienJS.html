@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Client js </title>
+</head>
+<body>
+<!--<input type="button" value="Dont press me" onclick="alert('Hello'); document.write('HIHIHIHIHIHIHIHIH')">-->
+<!--<button ondblclick="pressF()">Я буду работать через функцию</button>-->
+<script>
+
+</script>
+
+
+<!--//Основные события-->
+<!--на курсор-->
+<!--onclick - произведен клик(когда кнопка мыши отпущена)-->
+<!--onmousedown - нажата кнопка мыши-->
+<!--onmouseup - отжата кнопка мыши-->
+<!--onmousemove - указатель мыши движится внутри области-->
+<!--onmouseout - указатель мыши вышел из области отображения элемента-->
+<!--onmouseover - указатель мыши находиться внутри области отображения элемента-->
+
+<!--События клавиатуры-->
+<!--onkeydown - нажата кнопка на клавиатуре-->
+<!--onkeypress - кнопка на клавиатуре нажата и не отпускается дольше чем , чем иттервал повторения-->
+<!--onkeyup - отпущена ранее нажатая кнопка-->
+<!--События форм и элементовстраницы-->
+<!--onchange - элемент теряет фокус вода , а содержимое элемента изменилось за время , пока элемент был в фокусе-->
+<!--onselect - какая-то часть текста внутри элемента становиться выделенной-->
+<!--onsubmit - в форме нажата кнопка "Отправить" , но отправка формы на сервер еще не производилась-->
+<!--События форм и элементов страницы->
+onblur - элемент управления теряет фокус ввода , т.е курсор переходит к другому элементу
+onload - завершена загрузка странцы
+onunload - производится выход из документа(закрытие или перенаправление страницы на другой адрес).
+onscroll - срабатывает при прокрутке элемента
+
+<--block 2 Поиск элементов -->
+<input type="text" value="HI" id="test">
+<input type="button" onclick="f()" value  = 'Press'>
+<ul class="text-list">
+  <li>Lorem ipsum dolor.</li>
+  <li>A, dolor, voluptatem.</li>
+  <li>At, soluta, unde!</li>
+  <li>Praesentium qui, quis.</li>
+  <li>Illo, quasi, ut?</li>
+  <li>Aspernatur, dolore eligendi!</li>
+</ul>
+<script>
+  function f(){
+  let item =   document.getElementById('test');//ищем элемент с id = test
+alert(item.value) //Hi , получаем значение атрибута value
+    // alert(item.id)//test
+    // alert(item.type)//text
+    // item.value = 'fgkdgkjfd'
+
+
+    //универсальный поиск по селектору (как в css)
+    let elem = document.querySelector('#test')
+    elem.value = 'I am found'
+
+    let elemList = document.querySelector('.text-list > li')
+    elemList.innerHTML = 'HI me' //помениям только в  ПЕРВОМ ЭЛЕМЕНТЕ списка потому что querySelector взвращает первый найданный элемент
+    //Для того чтобы получать коллекцию данных (пример : все li) нужно использовать querySelectorAll();
+  }
+</script>
+</body>
+</html>

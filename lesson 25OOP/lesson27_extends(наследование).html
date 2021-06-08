@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Extend OOP</title>
+</head>
+<body>
+
+<script>
+  //Одна из трех парадигм ООП это наследование
+  //Наследование позволяет создать расширенный класс на основе родительского
+  //Такой класс называется дочерним/производным.
+  class Animal{
+    constructor(name) {
+      this.name = name;
+    }
+    showInfo(){
+      console.log(`Animal name is ${this.name}`)
+    }
+    move(){
+      console.log('Moving---')
+    }
+
+  }
+//класс CAt унаследовался от класса Animal. Тем самым он имеет теже методы и свойства
+  //но при этом , дочерний класс может переопределять данные свойства и методы.
+  class Cat extends Animal{
+    constructor(name , age , width , height, ) {
+      super(name);
+      //кошачьи совойства
+      this.age = age
+      this.height  = height;
+      this.width = width;
+    }
+    showInfo() {
+      // super.showInfo();//это необязательная инструкция при переопределении метода, она позволяет вызвать , то что выполняется в нем
+      console.log(` ${this.age} Years old`)
+      console.log(`Cat height = ${this.height}`)
+      console.log(`Cat width = ${this.width}`)
+    }
+  }
+  const someAnimal =  new Animal('Barsik')
+  someAnimal.showInfo();//Animal name is Barsik
+  let pushok = new Cat('Pushok' , 2 , 50 , 230)
+  pushok.showInfo()// Animal name is Pushok
+
+
+  class Mouse extends Cat{
+
+  }
+
+  console.log(`-----------------------------------------`)
+  let mickey = new Cat('MIckeey ', 23543, 3544 , 5556)
+  mickey.move()
+  mickey.showInfo();
+
+</script>
+
+</body>
+</html>

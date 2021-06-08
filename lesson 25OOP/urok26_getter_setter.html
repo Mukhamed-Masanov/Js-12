@@ -1,26 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
 <script>
-  class Person{
-    constructor(firstName , lastName) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-    }
-    getFullName(){
-      return `${this.firstName} ${this.lastName}`
-  }
-  }
-  const a = new Person('Mukhamed' , 'Masanov')
-  alert(a.getFullName())
+    class Person {
+        constructor(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this._gender = null;//приватное поле
+        }
 
+        //Геттер/get(возвращаемый) - свойство который инициализируется ключевым словом get. Используется для получения значения(т.е в нем обязательно
+        // исп. оператора return).Часто исп. для возвращения приватного свойства
+
+
+        get gender() {
+            return this._gender
+        }
+
+
+        //Сеттер/set(установщик)- свойситво , позволяющее установить значение приватного свойства , переменная в параметра является обязательный
+        set gender(value) {
+            if (value === 'male' || value === 'female') {
+                this._gender = value;
+            } else {
+                console.log('You only can choose between male and female')
+            }
+        }
+
+        getFullName() {
+            return `${this.firstName} ${this.lastName}`
+        }
+    }
+
+    const a = new Person('Mukhamed', 'Masanov')
+    console.log(a.gender);// null//вызовем геттер
+    a.gender = 'lalaland'//устанавливаем значения в приватное совйство через геттер
+    console.log(a.gender)//null, вызываем геттер
+    a.gender = 'male'//ещё раз устанавливаем значения в приватное свойство через геттер
+    console.log(a.gender);
+    console.log(a.getFullName());
 </script>
 </body>
 </html>
