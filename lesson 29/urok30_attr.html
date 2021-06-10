@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Attributes</title>
+    <style>
+        .p-style {
+            color: blue;
+            font-size: 100px;
+        }
+
+        .basic {
+            background-color: aqua;
+            font-size: 2em;
+            border: blueviolet solid 5px;
+        }
+
+    </style>
+</head>
+<body>
+<!--Блок 1 .Продвинутая работа с аттрибутами -->
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab dolores expedita facere fuga laudantium nesciunt numquam
+    omnis quaerat quod temporibus.</p>
+<input type="button" onclick="changeP()" value="Change <p>">
+<script>
+    //getAttributes - считывает значение указанного аттрибута
+    //setAttribute - записывает новое значение в аттрибут
+    //removeAttribute - удаляем аттрибут в цело м и полностью
+    //hasAttribute - проверяет наличие аттрибута (Возвращает : true/false)
+    //(Примечание : атрибут class записывается как className)
+    function changeP() {
+        let p = document.querySelector('p');
+        p.setAttribute('class', 'p-style')
+        console.log(p.getAttribute('class'));//p-style
+        //  p.removeAttribute('class');
+        console.log(p.hasAttribute('class'));//false
+    }
+
+
+</script>
+
+<!--Блок 2.Работа с classList-->
+<div class='basic'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias doloribus, itaque nisi velit
+    veritatis!
+</div>
+<script>
+    //classList - позволяет выполнять манипуляции именно с атрибутом class. Он умеет добавлять классы, удалять,проверять
+    //на наличие среди других классов
+    //метод add = добавляет указанный класс к существующим
+    document.querySelector('.basic').classList.add('p-style')
+    //contains - проверяет , на наличие указанного класса (возвращает true если такой класс есть и false если нет)
+    //toggle - добавляет класс  если его нет , но удаляет если он есть
+    //remove - удаляет указанный атрибут
+    
+</script>
+</body>
+</html>
