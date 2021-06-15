@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Блок 1 - Создание и добавление элементов  на страницу-->
+<!--метод createElement - создается элемент(но не добавляет)-->
+<!--метод appendChild - добаляет на страницу созданный элемент-->
+
+
+<!--//<div id="parent"></div>-->
+<!--<script>-->
+<!--  // const parent = document.querySelector('#parent')-->
+<!--  // const p = document.createElement('p');-->
+<!--  // p.innerHTML = 'Я сгенерирован'-->
+<!--  // parent.appendChild(p)-->
+<!--  -->
+<!--</script>-->
+
+<!--Пример создания списка-->
+<ul id="parent">
+
+</ul>
+<script>
+  const parent = document.querySelector('#parent')
+  let li = '';
+  for(let i = 1 ; i <=10 ; i++){
+    li =  document.createElement('li')
+    li.innerHTML = `Элемент списка ${i}`
+    parent.appendChild(li);
+  }
+  let lastLi = document.createElement('li')
+  lastLi.innerHTML = 'Я последний'
+  parent.appendChild(lastLi)//добавить в конец списка
+  parent.removeChild(lastLi)//удалим проследний элемент
+  let selectLi = document.querySelectorAll('ul#parent>li')
+  selectLi[3].innerHTML = 'Меня изменили'
+</script>
+</body>
+</html>

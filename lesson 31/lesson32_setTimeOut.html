@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Блок 1. Таймер - setInterval() и setTimeOut()
+setInterval() - запускаеть функцию через определенный промежуток
+принимает два парметра
+1.callback , 2.количество
+миллисекунд (1000мс = 1с).Минимальное значение 10мс
+-->
+
+<script>
+// let timer = () =>{
+//   document.write('Timer has turned on <br>')
+// }
+// setInterval(timer , 1000);
+//короткая запись
+//setInterval(() => document.write('Timer has turned <br>') , 1000)
+</script>
+
+<!--Блок 2 - вызов таймера по нажатию кнопки-->
+<!--<input type="button" value="Turn on timer" id="start">-->
+<!--<input type="button" value="Turn off timer" id="stop">-->
+<!--<script>-->
+<!--&lt;!&ndash;  let startTimer = document.querySelector('#start')&ndash;&gt;-->
+<!--&lt;!&ndash;  let stopTimer = document.querySelector('#stop')&ndash;&gt;-->
+<!--&lt;!&ndash;  let i = 0&ndash;&gt;-->
+<!--&lt;!&ndash;  let timerId = null&ndash;&gt;-->
+<!--&lt;!&ndash;  startTimer.addEventListener('click' , () =>{&ndash;&gt;-->
+<!--&lt;!&ndash;  timerId =   setInterval(() => console.log(i++) , 500)&ndash;&gt;-->
+<!--&lt;!&ndash;    console.log(`Timer №${timerId}`)&ndash;&gt;-->
+<!--&lt;!&ndash;  })&ndash;&gt;-->
+<!--&lt;!&ndash;  stopTimer.addEventListener('click' , ()=>{&ndash;&gt;-->
+<!--&lt;!&ndash;    // for ( ; timerId !== 0  ; timerId&#45;&#45;){&ndash;&gt;-->
+<!--&lt;!&ndash;    //   clearInterval(timerId)&ndash;&gt;-->
+<!--&lt;!&ndash;    // }&ndash;&gt;-->
+<!--&lt;!&ndash;    while (timerId) clearInterval(timerId&#45;&#45;)&ndash;&gt;-->
+<!--&lt;!&ndash;  })&ndash;&gt;-->
+<!--</script>-->
+
+<!--Блок 3. setTimeOut - выполняет ф-ю с отложенной задержкой-->
+<!--<input type="button" value="Press" id="test" onclick="f()">-->
+<!--<script>-->
+<!--  function f(){-->
+<!--    setTimeout(() => alert('Я буду вызван через 3 сек'), 1000)-->
+<!--  }-->
+<!--</script>-->
+
+<!--пример  с рекурсией-->
+<script>
+  // timer()
+  // function timer(){
+  //   setTimeout(timer , 1000)
+  //   document.write('timer <br>')
+  // }
+</script>
+
+<!--Задача: Создать электронные часы выводящие данные в формате HH:mm:ss-->
+<h1 id="clock">
+
+</h1>
+<script>
+  let date = new Date()
+  let hours = 0
+  let minutes = 0
+  let seconds = 0
+  function timer(){
+    date = new Date();
+    seconds = date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
+    minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+    hours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+    document.querySelector('#clock').innerHTML = `${hours}:${minutes}:${seconds}`;
+    setInterval(timer , 1000)
+  }
+  timer()
+</script>
+</body>
+</html>

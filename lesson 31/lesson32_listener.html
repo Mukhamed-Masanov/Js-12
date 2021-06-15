@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Блок 1.Listener(слушатель) - задача его срабоать при опраделенном событии-->
+<!--В js за сздание слушателя отвечает метод addEventListener() - первый параметр название события (без приставки on,
+т .е click , focus ), а вторым параметром он принимает callBack , т.е которая привязывается к событию -->
+
+<input type="button" id="test" value="На мне висит 2 слушателя">
+<script>
+    const  elem = document.querySelector('#test')
+    elem.addEventListener('click' , func1)
+    elem.addEventListener('click' , () => alert('HIhoy'))
+    function func1() {
+        elem.setAttribute('value' , 'Я поменял value')
+    }
+</script>
+<!--Пример с созданием\отключением слушателя-->
+<input type="button" id="test1" value="Button 1 ">
+<input type="button" id="test2" value="Button 2 ">
+<input type="button" id="test3" value="Button 3 ">
+<input type="button" id="test4" value="Button 4 ">
+<script>
+    const elements = document.querySelectorAll('input[type= "button"]')
+    for (const elem of elements){//перебираем кнопки и вешаем на каждую слушатель
+        elem.addEventListener('click' , f
+        //     () =>
+        // {
+        //     alert(elem.value)
+        //     elem.removeEventListener('click' , () => {} )
+        // }
+        )
+    }
+function f() {
+    alert(this.value)
+    this.removeEventListener('click' , f)
+}
+</script>
+</body>
+</html>
