@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+
+
+</style>
+<body>
+<!--ПРИМЕР АНИМАЦИИ ЧЕРЕЗ SETINTERVAL(НЕ САМЫЙ ЛУЧШИЙ СПОСОБ)-->
+<div id="roundRed" class="circle red"></div>
+<div id="roundBlue" class="circle blue"></div>
+<script>
+    let startDate = Date.now();//timestamp , кол-во прошедших с 1970г , 1 января
+    let redCircle = document.querySelector('#roundRed')
+    let circleRedRadius = getComputedStyle(redCircle).width
+    let viewPortWidth = document.body.clientWidth // получить ширины body
+    //getComputedStyle() - позволяет получить вычесляемое свойство
+    let positionCircleRedLeft = getComputedStyle(redCircle).left
+    let positionCircleRedTop = getComputedStyle(redCircle).top
+
+    let positionCircleRedLeftCut = +positionCircleRedLeft.substring(0, positionCircleRedLeft.length - 2);//таким образом срезаем их
+    let positionCircleRedTopCut = +positionCircleRedTop.substring(0, positionCircleRedTop.length - 2);//таким образом срезаем их
+
+    let timeDuration = Date.now() - startDate
+    setInterval(function () {
+        if (positionCircleRedLeftCut < viewPortWidth) {
+            positionCircleRedLeftCut += timeDuration * 10
+        } else {
+            positionCircleRedLeftCut = 0
+            positionCircleRedTopCut += +circleRedRadius.substring(0, circleRedRadius.length - 2)
+        }
+        positionCircleRedLeftCut += timeDuration * 5;
+        redCircle.style.left = positionCircleRedLeftCut + 'px';
+        redCircle.style.top = positionCircleRedTopCut + 'px'
+    }, 1000 / 55)
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <style>
+        #down{
+            cursor: pointer;
+        }
+        #block{
+            display: none;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<!--<h1>I am simple title</h1>-->
+<!--<ul>-->
+<!--    <li>Lorem ipsum dolor sit amet.</li>-->
+<!--    <li>Dicta nemo reprehenderit saepe ut!</li>-->
+<!--    <li>Aut, minus, nisi? Cupiditate, obcaecati.</li>-->
+<!--    <li>Aliquam atque molestiae nulla praesentium?</li>-->
+<!--    <li>Esse in ipsa nobis repellendus.</li>-->
+<!--</ul>-->
+
+<!--<p id="first">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
+<!--<p>Doloremque molestias nam neque quaerat quam reprehenderit temporibus.</p>-->
+<!--<p>Adipisci alias error hic in quam rerum voluptates.</p>-->
+<!--<p>Dolor ipsa maiores nam neque saepe tenetur ullam?</p>-->
+
+
+<!--&lt;!&ndash;Пример с фильтром контента:&ndash;&gt;-->
+<!--<p>Привет студенты</p>-->
+<!--<p></p>-->
+<!--<p></p>-->
+<!--<p></p>-->
+<!--<p></p>-->
+
+
+<!--<h2></h2>-->
+<!--<h2></h2>-->
+<!--<h2>Third</h2>-->
+<script>
+<!--    Изменение текста заголовка на чистом js -->
+   // document.getElementsByTagName('h1')[0].innerHTML = 'Чистый JS'
+
+
+//С использованием jQuery
+
+//Справка : чтобы выполнять код jQuery  и быть точно уверенным , что jQuery успела подгрузиться необходимо оборачивать (jquery код) в специальную функцию
+//Полный выраинт функции
+//$(document).ready(() =>){
+//
+//}
+//Сокращенный вариант , то же что и сверху
+$(function (){
+ //   $('h1').html('I am using jQuery')
+    //Задача : применить стили к элементам списка
+//по саринке:
+ //   let list = document.querySelectorAll('ul>li')
+ //   for(let i = 0 ; i < list.length ; i++){
+  //      list[i].style.backgroundColor = 'red'
+  //      list[i].innerHTML = `New ${i}`
+  //  }
+
+    //на jquery
+  //  $('ul>li').css('backgroundColor' , 'green').html('jqeyry new')
+
+  //  $('ul > li').each((index , elem ) => {
+        $(elem).css('backgroundColor' , 'blue').html(`Jquery new ${index}`)
+  //  })
+
+   // $('#first ~ p').css({'fontSize' : '32px' , 'border': '2px solid black'})
+
+
+// псевдокласс: contains - выбирает элементы по наличию определенного текста в них
+  //  let $elem = $('p:contains("Привет")')
+//alert($elem.html()) //привет студенты
+
+//псеводкласс :empty - находит пустые элементы
+    //let $elems = $('p:empty'); //нашли три пустых p
+   // $('p:empty, h2:empty').html('МЫ новый текст')
+
+})
+</script>
+<!--Блок 2 анимации jQeury-->
+<!--Плавное разворачивание / сварачиване-->
+<div id="down">Нажми чтобы развернуть</div>
+<div id="block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque dicta dignissimos dolores esse et
+    hic labore laudantium molestias odit quos sapiente sed, vel. Ab dolore et ipsa ipsam labore nam nemo odit, quas quis
+    ratione repellendus, sapiente sint suscipit vitae, voluptatum. Delectus illo quas reiciendis. Beatae ducimus
+    sapiente voluptates.
+</div>
+<script>
+    $(() =>{
+        // $('#down').click(() =>{
+        //     $('#block').slideDown('slow');
+        // })
+        // $('#block').mouseenter(() =>{
+        //     $('#block').slideUp(1000)
+        // })
+        $('#down').click(() =>{
+            $('#block').slideToggle(2000)
+        })
+    })
+</script>
+</body>
+</html>

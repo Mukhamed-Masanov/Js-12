@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <style>
+    div{
+      width: 100vw;
+      height: 50px;
+      margin: auto;
+      background-color: firebrick;
+    }
+
+
+
+  </style>
+</head>
+<body>
+<!--RequestAnimationFrame() - метод для создания анимаций(оптимизированных)-->
+<button id="start">Start</button>
+<button id="end">End</button>
+<div></div>
+
+<script>
+  let div = document.querySelector('div')
+
+  let id ;
+
+  div.style.width = div.clientWidth + 'px'
+  let repeat = () =>{
+    div.style.width = parseFloat(div.style.width) -  1.01 + 'px' //записывем свойства
+     id = requestAnimationFrame(repeat)
+  }
+
+  let start = document.querySelector('#start')
+  start.addEventListener('click' , () => {
+    id = requestAnimationFrame(repeat)
+  })
+  let end = document.querySelector('#end')
+  end.addEventListener('click' , () => {
+cancelAnimationFrame(id) //для остановки
+  })
+</script>
+</body>
+</html>
