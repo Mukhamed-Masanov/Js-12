@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-do list</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <script src="to-do.js"></script>
+    <style>
+        .complete{
+            background-color: firebrick;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="page">
+
+    <h1 id="header">Список дел</h1>
+    <h2>В списке : <span id="counter"></span> дел</h2>
+</div>
+<ul id="list">
+    <li>Read book</li>
+    <li>Finish hometask</li>
+    <li>Have a rest</li>
+    <li>Take out the rubbish</li>
+    <li> Go home</li>
+</ul>
+<div id="newItemButton">
+    <a href="#" id="showForm">New item</a>
+</div>
+<form action="" id="newItemForm">
+    <input type="text" id="itemDescription" placeholder="Введети что хотите добавить">
+    <input type="button" id="add" value="Add">
+</form>
+</body>
+</html>
