@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal cookie</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <script src="jquery_cookie.js"></script>
+    <style>
+        .popup {
+            box-sizing: border-box;
+            position: fixed;
+            top: -400px;
+            left: 15%;
+            width: 70%;
+            z-index: 1000;
+            padding: 16px;
+            background-color: lightskyblue;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+        }
+
+        .popup__bg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(30, 30, 30, 0.7);
+            z-index: 999;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Приветсвуем вас</h1>
+<div class="popup">
+    <div class="popup__header">
+        <h3>Подпишитесь на нашу рассылку</h3>
+    </div>
+    <div class="popup__content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto minima molestias porro suscipit
+            voluptatum?
+            Accusantium, cum dolore enim eum ipsa optio, praesentium quasi quod sit ullam veritatis vero. Modi,
+            quod.</p>
+    </div>
+    <div class="popup__footer">
+        <form action="">
+            <input type="text" placeholder="Your name">
+            <input type="text" placeholder="Your Email">
+            <input type="submit" placeholder="Subscribe">
+        </form>
+    </div>
+
+</div>
+<div class="popup__bg"></div>
+<script>
+    $(() => {
+        let $popup = $('.popup')
+        let $popupBg = $('.popup__bg')
+        let popupShow = (popup, bg) => {
+            popup.animate({
+                top: '300px'
+            }, 1500)
+
+
+            bg.fadeIn(1000).on('click', () => {
+                popup.animate({
+                    top: "-400px"
+                }, 800, function () {
+                    bg.fadeOut(500)
+                })
+            })
+        }
+
+        function removeCookie() {
+            $.removeCookie('visit')
+        }
+
+        //при первом посещении сайта куки visit будет undefined
+        if ($.cookie('visit')) {
+
+            $('body').append('<a href="#" onclick="$.removeCookie(\'visit\'  , {path: `/`})">Delete Coookie</a>')
+        } else {
+            $.cookie('visit', true , {expires :7 , path: `/`})
+            popupShow($popup, $popupBg)
+        }
+    })
+
+</script>
+</body>
+</html>

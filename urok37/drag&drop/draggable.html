@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Draggable</title>
+  <script src="../jquery-3.6.0.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+    <style>
+        .container{
+            width: 700px;
+            height: 700px;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+        .widget{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .widget2{
+            width: 200px;
+            height: 200px;
+            background-color: #007fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container" class="container">
+    <div class="widget" ></div>
+    <div class="widget2"></div>
+
+</div>
+
+<script>
+$(()=>{
+   $('.container > div').draggable({
+containment:'#container', //ограничивает перемещение
+       revert: true , //вернуть объект в начальную позицую
+       //revertDuration: 5000 , //время возвращения
+       cursor: 'move' ,
+       snap:'*' , //будут происходить прилипание ко всем елементам
+       grid: [1 , 1] , //перемещение с шагом
+       opacity: 0.4 , //непрозрачность при перетаскивании элемента
+       axis : 'x' //перемещать только по оси
+   })
+
+})
+</script>
+</body>
+</html>

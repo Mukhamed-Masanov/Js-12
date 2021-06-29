@@ -6,6 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cookie</title>
+    <style>
+        /*.focused{*/
+        /*    border-bottom-color: blue;*/
+        /*}*/
+        /*.green{*/
+        /*    border-bottom-color: green;*/
+        /*}*/
+        /*.red{*/
+        /*    border-bottom-color: firebrick;*/
+        /*}*/
+    </style>
+    <script src ="../jquery-3.6.0.min.js"></script>
+    <script src ="jquery_cookie.js"></script>
 </head>
 <body>
 <!--Общая информация
@@ -17,7 +30,58 @@
 -куки не защщенная в полная мере информация , поэтому логины/пароли/личные данные ит.п. ни в коем случае хранить в куки нельзя.
 
 Где посмотреть куки, которые создаются при посещени сайта?
-- 
+F-12 -> application -> cookies
+
+Из чего состоят cookie?
+name - имя куки , может быть любым , желательно использовать латинские буквы
+value - значение , можно получить через имя куки
+path - путь , позволяет задать в пределах каких директорий на вашем сайте будет работать куки. Чаще всего указывается
+/ - т.е корневая папка сайта
+expires  - время жизни куки. Куки бывают сессионные - т.е. они существуют до того момента пока пользователь не покинет сайт
+и с временем жизни (локальные)
+size - размер куки , мы на него не влияем
+SameSite - дает возможность определить допустимость передачи куки при поступлении запроса со стороннего ресурса.
 -->
+<h1>Your city - </h1>
+
+<script>
+   document.querySelector('h1').innerHTML += $.cookie('city') ?? 'не указан'
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<input type="text" class="input" data-length = 5>-->
+<!--<script>-->
+<!--    const input = document.querySelector('.input')-->
+<!--    input.addEventListener('focusin' , () =>{-->
+<!--        input.classList.add('focused')-->
+<!--    })-->
+<!--    input.addEventListener('focusout' , () => {-->
+<!--        if(input.value.length === +input.getAttribute('data-length')){-->
+<!--            input.classList.add('green')-->
+<!--        }else{-->
+<!--            input.classList.add('red')-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
 </body>
 </html>
