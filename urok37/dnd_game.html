@@ -78,8 +78,8 @@
         }
 
         //ЗАПОЛНЕНИЕ cardSlots
-        for(let j = 0 ; j <= words.length ;  ){
-            $(`<div><span>${words[j]}</span></div>`).data('number' , words[j++]).appendTo('#cardSlots').droppable({
+        for(let j = 0 ; j < words.length ; j++ ){
+            $(`<div><span>${words[j]}</span></div>`).data('number' , j+1).appendTo('#cardSlots').droppable({
                 accept: '#cardPile div',
                  drop: function (event , ui) {
                     alert($(this).data('number'))
