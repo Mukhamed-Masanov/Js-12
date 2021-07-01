@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .content {
+            margin: 80px 70px;
+        }
+
+        .cardPile {
+            padding: 5px;
+            background-color: #ffd;
+        }
+
+        .cardSlots {
+            background-color: #ddf;
+        }
+
+        .cardPile, .cardSlots {
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+            min-height: 200px;
+            margin: 60px auto;
+            border: 2px solid black;
+        }
+
+        .cardPile div, .cardSlots div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0 10%;
+        }
+
+        .cardPile div {
+            background-color: #007fff;
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 0 0 3px #000;
+            user-select: none;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="content" class="content">
+    <div id="cardPile" class="cardPile"></div>
+    <div id="cardSlots" class="cardSlots"></div>
+</div>
+<script>
+    $(() => {
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const words = ["Один", "Два", "Три", "Четыре", "Пять", "Шесть", "Семь", "Восемь", "Девять", "Десять"]
+        let correctCards = 10;
+        let wrong = 0;
+        //перетосуем числа случайным образом remember
+        numbers.sort(() => Math.random() - 0.5)
+        console.log(numbers);
+//заполнение cardPile - верхнего блока с картами
+        for (let i = 0; i < numbers.length; i++) {
+            $(`<div><span>${numbers[i]}</span></div>`).data('number', numbers[i]).appendTo('#cardPile').draggable({
+                containment : "#content",
+                revert: true,
+                cursor : "move",
+
+            })
+        }
+
+        //ЗАПОЛНЕНИЕ cardSlots
+        for(let j = 0 ; j <= words.length ;  ){
+            $(`<div><span>${words[j]}</span></div>`).data('number' , words[j++]).appendTo('#cardSlots').droppable({
+                accept: '#cardPile div',
+                 drop: function (event , ui) {
+                    alert($(this).data('number'))
+                 }
+            })
+        }
+
+    })
+</script>
+</body>
+</html>

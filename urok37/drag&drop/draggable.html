@@ -6,49 +6,96 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Draggable</title>
-  <script src="../jquery-3.6.0.min.js"></script>
+    <script src="../jquery-3.6.0.min.js"></script>
     <script src="../jquery-ui.min.js"></script>
     <style>
-        .container{
+        .container {
             width: 700px;
             height: 700px;
             border: 2px solid black;
             margin: 0 auto;
         }
-        .widget{
+
+        .widget {
             width: 200px;
             height: 200px;
             background-color: red;
         }
-        .widget2{
+
+        .widget2 {
             width: 200px;
             height: 200px;
             background-color: #007fff;
         }
+      .events{
+          border: 2px solid black;
+          width:fit-content;
+          cursor: pointer;
+      }
     </style>
 </head>
 <body>
 
 <div id="container" class="container">
-    <div class="widget" ></div>
+    <div class="widget"></div>
     <div class="widget2"></div>
+    <div id="events" class="events">
+        <strong>Drag me for calling event</strong>
+        <div class="event">Событие "start" было вызвано <span id="start"></span> раз</div>
+        <div class="event">Событие "stop" было вызвано <span id="stop"></span> раз</div>
+        <div class="event">Событие "drag" было вызвано <span id="drag"></span> раз</div>
+    </div>
 
+    <ul class="sortable">
+        <li class="li-drag">Item 1</li>
+        <li class="li-drag">Item 2</li>
+        <li class="li-drag">Item 3</li>
+        <li class="li-drag">Item 4</li>
+        <li class="li-drag">Item 5</li>
+    </ul>
 </div>
 
 <script>
-$(()=>{
-   $('.container > div').draggable({
-containment:'#container', //ограничивает перемещение
-       revert: true , //вернуть объект в начальную позицую
-       //revertDuration: 5000 , //время возвращения
-       cursor: 'move' ,
-       snap:'*' , //будут происходить прилипание ко всем елементам
-       grid: [1 , 1] , //перемещение с шагом
-       opacity: 0.4 , //непрозрачность при перетаскивании элемента
-       axis : 'x' //перемещать только по оси
-   })
+    $(() => {
+        $('.container > div:not("#events")').draggable({
+            containment: '#container', //ограничивает перемещение
+            revert: true, //вернуть объект в начальную позицую
+            //revertDuration: 5000 , //время возвращения
+            cursor: 'move',
+            snap: '*', //будут происходить прилипание ко всем елементам
+         //    grid: [1, 1], //перемещение с шагом
+            opacity: 0.5, //непрозрачность при перетаскивании элемента
+            // axis: 'x', //перемещать только по оси
 
-})
+            //центрирование курсора при захвате объекта
+            drag:function (event , ui) {
+                $(this).draggable('option' , 'cursorAt' , {
+                    left:Math.floor( this.clientWidth / 2 ),//clientWidth - получить ширину элемента
+                    top:Math.floor( this.clientHeight / 2 )//clientWidth - получить ширину элемента
+                })
+            }
+        })
+
+        //пример с events
+        let x = y = z = 0 ;
+        $('#events').draggable({
+            start:function (event , ui) {
+                $('#start').html(++x)
+            },stop: function (event , ui) {
+                $('#stop').html(++y)
+            },drag: function (event , ui) {
+                $('#drag').html(++z)
+            },
+        })
+
+        //Пример :sortable - сортировка
+        $('.sortable').sortable()
+        $('.li-drag').draggable({
+            helper: 'clone' ,
+            connectToSortable: ('.sortable')
+        })
+    })
+
 </script>
 </body>
 </html>

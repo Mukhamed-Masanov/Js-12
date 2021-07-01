@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Droppable</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+    <style>
+        .container {
+            width: 700px;
+            height: 700px;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+
+        div > * {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .widget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .widget2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            background-color: #007fff;
+        }
+
+        .drop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            background-color: #dad55e;
+        }
+        .success{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="container">
+    <div class="widget">Блок 1</div>
+    <div class="widget2"> Блок 2</div>
+    <div class="drop">
+        <p>Дропай сюда</p>
+    </div>
+</div>
+<script>
+    $(() => {
+        $('.container > div:not(".drop")').draggable({
+            containment: ".container",
+            snap: ".container",
+            cursor: "move",
+            opacity: 0.5,
+            revert: "invalid" //зафиксирует элемент при перемещении его в droppable область
+        })
+        $('.drop').droppable({
+            //event - drop - срабатывает при получении/пересечении другого элемента
+            drop: function (event, ui) {
+                //  alert('Пойман')
+                //ui.draggable - это объект , который в данный момент перенесен в область .вкщз
+                ui.draggable.position({
+                    my: "left top", //значение элемента .drop
+                    at: "left top", //значение перетаскиевамого элемента
+                    of: $('.drop'), //указываем , на какой элемент переносим
+                });
+                alert('Зафиксирован')
+            },
+            accept: '.widget' , //позволяет принимать только указанный элемент
+            hoverClass: 'success' ,//добавляет класс при занесении объекта
+            activeClass: 'success' ,//подсветит область для приема перетаскиваемого элемента
+        })
+    })
+
+</script>
+</body>
+</html>
