@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <style>
+    body {
+        width: 1210px;
+    }
+
     .circle {
         width: 100px;
         height: 100px;
@@ -28,7 +32,7 @@
 
 </style>
 <body>
-<!--ПРИМЕР АНИМАЦИИ ЧЕРЕЗ SETINTERVAL(НЕ САМЫЙ ЛУЧШИЙ СПОСОБ)-->
+<!--ПРИМЕР АНИМАЦИИ ЧЕРЕЗ SET INTERVAL(НЕ САМЫЙ ЛУЧШИЙ СПОСОБ)-->
 <div id="roundRed" class="circle red"></div>
 <div id="roundBlue" class="circle blue"></div>
 <script>
@@ -55,6 +59,22 @@
         redCircle.style.left = positionCircleRedLeftCut + 'px';
         redCircle.style.top = positionCircleRedTopCut + 'px'
     }, 1000 / 55)
+
+
+    //DZ 33
+    const blueCircle = document.getElementById('roundBlue')
+    let id;
+    let pos = 0;
+    let dir = 1;
+    let animation = () => {
+        pos += 5 * dir;
+        blueCircle.style.left = pos + 'px'
+        if (pos > viewPortWidth || pos <= 0) {
+            dir *= -1
+        }
+        id = requestAnimationFrame(animation)
+    }
+    id = requestAnimationFrame(animation)
 </script>
 </body>
 </html>
