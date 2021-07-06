@@ -19,6 +19,7 @@ $(() => {
     }
 
     updateCounter()
+
     //Подготовка к добавлению элементов
     $newItemForm.hide()
     $('#showForm').on('click', function (e) {
@@ -27,25 +28,39 @@ $(() => {
         //(допустим строки снизу)
         $newItemButton.hide()
         $newItemForm.show();
+        $itemDescription.focus()
     })
     //Добавление нового элемента
-    $newItemForm.on('submit', function (e) {
-        e.preventDefault()
-        const text = $itemDescription.val().trim(); //берем значения атрибута value //trim - убирает пробелы ,
-        // табуляцию , переносы на новую строку в начале и в конце строки
+    $newItemForm.submit(function (event) {
+        event.preventDefault()
+        const text = $itemDescription.val().trim();
+        let $time = new Date();
+$('.time').after(`<p>${$time.getFullYear()}:${$time.getMonth()}:${$time.getDate()}</p>`)
         if (text.length !== 0) {
-            $list.prepend(`<li>${text}</li>`)
+            $list.prepend(`<li class="time">${text}</li>`)
             $itemDescription.val('');
             updateCounter();
         }
     })
+
+    // $newItemForm.on('submit', function (e) {
+    //     e.preventDefault()
+    //
+    //     const text = $itemDescription.val().trim(); //берем значения атрибута value //trim - убирает пробелы ,
+    //     // табуляцию , переносы на новую строку в начале и в конце строки
+    //     if (text.length !== 0) {
+    //         $list.prepend(`<li>${text}</li>`)
+    //         $itemDescription.val('');
+    //         updateCounter();
+    //     }
+    // })
 
     //удаление элементов , при первом нажатии на элемент мы делаем егокрасным цветом и помещаем  в конец списка . При повторном нажатии мы удаляем элемент
     $list.on('click', 'li', function () {
         let $elem = $(this); //кэшируем элемент . т.е сохранит его нажатым его в нажатом состоянии
         let $complete = $elem.hasClass('complete') //проверяем есть ли у элемента класс complete. Return boolean
         if ($complete) {
-            $elem.animate({opacity: 0 , paddingLeft: '+=180px' , fonSize : '-=40px'}, 5000, 'swing', () => {
+            $elem.animate({opacity: 0, paddingLeft: '+=180px', fonSize: '-=40px'}, 5000, 'swing', () => {
                 $elem.remove()
                 updateCounter()
             })
