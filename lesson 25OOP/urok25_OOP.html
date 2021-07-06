@@ -82,23 +82,29 @@
     kv.moveAndFire(44354, 55545, 4645, 3545)
 
     class Marker {
-        markerColor = 'red'
-        inkAmount = '3%'
-
-        typeText(string) {
-            let p = document.createElement('p')
-            const body = document.querySelector('body')
-            p.style.color = `${this.markerColor}`
-            p.innerHTML = string
-            body.appendChild(p)
+        inkAmount = 3
+       text = ''
+        markerColor = ''
+        typeText() {
+            debugger;
+            let button = document.querySelector('#button')
+            button.addEventListener('click' , () =>{
+                this.text = document.querySelector('#text').value
+                this.markerColor = document.querySelector('#color').value
+                const body = document.querySelector('body')
+                let p = document.createElement('p')
+                p.style.color = this.markerColor
+                p.innerHTML = this.text
+                body.appendChild(p);
+            })
         }
     }
 
     const printer = new Marker();
-    printer.typeText('When i get older , i will be stronger.')
+    printer.typeText()
 </script>
-<input type="text" value="Enter some text">
-<input type="color" value="Choose color">
-<input type="button" value="Print text">
+<input id="text" type="text" placeholder="Enter some text">
+<input id="color" type="color" value="Choose color">
+<input id="button" type="button" value="Print text">
 </body>
 </html>
