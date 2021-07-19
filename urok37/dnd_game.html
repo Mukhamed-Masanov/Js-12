@@ -51,42 +51,91 @@
             user-select: none;
             border: 1px solid black;
         }
+
+        .success {
+            background-color: yellow !important;
+        }
+
+        .winModal {
+            display: none;
+            border: 1px solid black;
+            width: 60%;
+            position: fixed;
+            left: 20%;
+            top: 40%;
+            background-color: green;
+        }
     </style>
 </head>
 <body>
 <div id="content" class="content">
     <div id="cardPile" class="cardPile"></div>
     <div id="cardSlots" class="cardSlots"></div>
+    <div id="winModal" class="winModal">
+        <h2>Победа</h2>
+        <button onclick="document.location.reload()">Play again</button>
+    </div>
 </div>
 <script>
     $(() => {
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const words = ["Один", "Два", "Три", "Четыре", "Пять", "Шесть", "Семь", "Восемь", "Девять", "Десять"]
-        let correctCards = 10;
-        let wrong = 0;
+        let correctCards = 0;
+        let wrong = 3;
         //перетосуем числа случайным образом remember
         numbers.sort(() => Math.random() - 0.5)
         console.log(numbers);
 //заполнение cardPile - верхнего блока с картами
         for (let i = 0; i < numbers.length; i++) {
             $(`<div><span>${numbers[i]}</span></div>`).data('number', numbers[i]).appendTo('#cardPile').draggable({
-                containment : "#content",
+                containment: "#content",
                 revert: true,
-                cursor : "move",
+                cursor: "move",
 
             })
         }
+        //исчезание элементов через 4
+
+        $('.cardPile > div > span').delay(4000).fadeOut(500);
+
+
+      //  $('.cardPile > div > span').fadeOut(3000)
 
         //ЗАПОЛНЕНИЕ cardSlots
-        for(let j = 0 ; j < words.length ; j++ ){
-            $(`<div><span>${words[j]}</span></div>`).data('number' , j+1).appendTo('#cardSlots').droppable({
+        for (let j = 0; j < words.length; j++) {
+            $(`<div><span>${words[j]}</span></div>`).data('number', j + 1).appendTo('#cardSlots').droppable({
                 accept: '#cardPile div',
-                 drop: function (event , ui) {
-                    alert($(this).data('number'))
-                 }
+                // drop: function (event , ui) {
+                //    alert($(this).data('number'))
+                // }
+                drop: handleCardDrop
             })
         }
 
+        function handleCardDrop(event, ui) {
+            //слот в который мы переносим карточку и записываем его номер слота
+            let slotNumber = $(this).data('number')
+            //берем номер (data) перетаскиваемой карточки
+            let cardNumber = ui.draggable.data('number')
+            if (slotNumber === cardNumber) {
+                ui.draggable.draggable('disable') //отключает возможность перемещения элемента
+                //отключает revert для перемещаемого элемента
+                ui.draggable.draggable('option', 'revert', false)
+
+                //фиксируем карточку к левому верхнему угла слота
+                ui.draggable.position({
+                    of: this,
+                    my: 'left top',
+                    at: 'left top'
+                })
+                ui.draggable.addClass('success')
+                $('.cardPile > div.success > span').fadeIn(500)
+
+                ++correctCards === numbers.length && $('#winModal').fadeIn(1500);
+            } else {
+                --wrong === 0 && $('#winModal').fadeIn(1500);
+            }
+        }
     })
 </script>
 </body>

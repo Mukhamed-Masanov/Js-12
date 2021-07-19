@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Json</title>
+</head>
+<body>
+
+
+
+
+<script>
+  //представим что данные получены с внешней системы
+  let json = '{"firstName": "Mukhamed" , "lastName": "Masanov" , "age": 17 , "status": false , "contactInfo": {"number": "867535493333" , "email": "masanov@12345"} , "disciplines": ["Cooking", "Being late", "Teacher"]}'
+
+  //JSON(Java Script Object Notation ) - текстовый формат для хранения и передачи данных по сети.
+  //Json.parse() - преобразует Json в объект
+  //Json.stringify() - преобразует объект в json
+
+  let checkIsStudent = (key , value) =>{
+      if(key === "status" && value === false){
+          return undefined //убирает ключ status и значение соответственно
+      }
+      return value //если условие выполнится то будет без изменений
+  }
+
+  let person = JSON.parse(json , checkIsStudent)
+  console.log(person)
+  console.log(person.disciplines[0])
+
+  //пример с stringify
+  let checkAge = (key , value) =>{
+      if(key === 'age' && value < 18){
+          return 'Тебе можно'
+      }
+      return value
+  }
+  let personJson = JSON.stringify(person ,checkAge , 3) // пакуем в JSON объект person
+  //третий параметр space делает пробелы , чтобы было удобнее смотреть
+  console.log(personJson)
+</script>
+</body>
+</html>
