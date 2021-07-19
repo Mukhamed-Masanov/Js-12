@@ -6,42 +6,63 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-do list</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <script src="../jquery-3.6.0.min.js"></script>
+    <script src="../cookie/jquery_cookie.js"></script>
     <script src="to-do.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap');
 
-        *{
+        * {
             font-family: 'Caveat', cursive;;
         }
 
-        body{
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-       h1,  h2{
-            margin: 0 0 5px 0 ;
-        }
-        a{
-         text-decoration: none;
+        h1, h2 {
+            margin: 0 0 5px 0;
         }
 
-        .list{
-            margin: 0 0 5px 0 ;
+        a {
+            text-decoration: none;
+        }
+
+        .list {
+            margin: 0 0 5px 0;
             list-style-type: none;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
         }
 
         .complete {
             background-color: firebrick;
-            font-size: 40px;
+            font-size: 16px;
         }
-        .time::after{
-            content: '';
-            color: chartreuse;
+
+        .fa-trash {
             font-size: 10px;
+            color: red;
+            padding: 0 15px 0 0;
+            cursor: pointer;
         }
+
+        .fa-pen-square {
+            font-size: 15px;
+            color: red;
+            padding: 0 0 0 10px;
+            cursor: pointer;
+        }
+
+         li > span:nth-child(2){
+             padding: 0 5px ;
+         }
     </style>
 </head>
 <body>
@@ -50,11 +71,11 @@
     <h2>В списке : <span id="counter"></span> дел</h2>
 </div>
 <ul id="list" class="list">
-    <li>Read book</li>
-    <li>Finish home task</li>
-    <li>Have a rest</li>
-    <li>Take out the rubbish</li>
-    <li> Go home</li>
+    <li><i class="fas fa-trash"></i><span>Read book </span> <i class="fas fa-pen-square"></i></li>
+    <li><i class="fas fa-trash"></i><span>Finish home task </span> <i class="fas fa-pen-square"></i></li>
+    <li><i class="fas fa-trash"></i><span>Have a rest </span> <i class="fas fa-pen-square"></i></li>
+    <li><i class="fas fa-trash"></i><span>Take out the rubbish </span> <i class="fas fa-pen-square"></i></li>
+    <li><i class="fas fa-trash"></i><span> Go home </span> <i class="fas fa-pen-square"></i></li>
 </ul>
 <div id="newItemButton">
     <a href="#" id="showForm">New item</a>
